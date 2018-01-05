@@ -1,0 +1,33 @@
+// Generate margins and paddings for a specific pixel value.
+@mixin generate-margins($value) {
+    .margin-#{$value}           {margin:        #{$value}px !important;}
+    .margin-top-#{$value}       {margin-top:    #{$value}px !important;}
+    .margin-bottom-#{$value}    {margin-bottom: #{$value}px !important;}
+    .margin-left-#{$value}      {margin-left:   #{$value}px !important;}
+    .margin-right-#{$value}     {margin-right:  #{$value}px !important;}
+
+    .margin--#{$value}          {margin:        -#{$value}px !important;}
+    .margin-top--#{$value}      {margin-top:    -#{$value}px !important;}
+    .margin-bottom--#{$value}   {margin-bottom: -#{$value}px !important;}
+    .margin-left--#{$value}     {margin-left:   -#{$value}px !important;}
+    .margin-right--#{$value}    {margin-right:  -#{$value}px !important;}
+
+    .padding-#{$value}          {padding:           #{$value}px !important;}
+    .padding-top-#{$value}      {padding-top:       #{$value}px !important;}
+    .padding-bottom-#{$value}   {padding-bottom:    #{$value}px !important;}
+    .padding-left-#{$value}     {padding-left:      #{$value}px !important;}
+    .padding-right-#{$value}    {padding-right:     #{$value}px !important;}
+}
+
+@include generate-margins(0);
+@include generate-margins(5);
+@include generate-margins(10);
+@include generate-margins(15);
+@include generate-margins(19);
+@include generate-margins(20);
+@include generate-margins(25);
+@include generate-margins(30);
+@include generate-margins(35);
+@include generate-margins(40);
+@include generate-margins(45);
+@include generate-margins(50);

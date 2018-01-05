@@ -1,0 +1,49 @@
+.order-panel{
+    margin-top:50px;
+    .panel-body{
+        padding:25px;
+        @include col-xs(){
+            padding:15px;
+            
+        }
+    }
+   
+    .order-title{
+        font-size: $fontSize18;
+        text-align: center;
+        font-weight: 700;
+        padding: 15px 0;
+        color:$black;
+    }
+    .panel-heading{
+        background-color: $grayColor;
+    }
+    .form-desc{        
+        color:#b6b6b6;
+        font-weight: 400;
+        font-size: $fontSize15;
+        a{
+            color:#b6b6b6;
+            text-decoration: underline;
+        
+        }
+    }
+   
+    .form-control{
+        box-shadow: 2px 2px 0 #bebebe;
+        @include border-radius(0 !important);
+        color:$black;
+        border-color:$black;
+        min-height: 60px;
+        padding-left: 37px;   
+        margin-bottom: 25px;    
+    }
+    @include col-xs(){
+        .margin-top-50{
+            margin-top: 0 !important;
+        }
+        .btn-red{
+            margin-top: 15px;
+        }        
+    }
+}

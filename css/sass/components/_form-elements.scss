@@ -1,0 +1,272 @@
+
+// custom inputs
+// custom checkbox/radios
+$input-padding:            6px                      !default;
+$check-height:             24px                     !default;
+$check-width:              $check-height         !default;
+$check-scale:              6px                      !default; // optimized for even numbers
+$check-input-bg-color:     #fff                     !default;
+$check-border-width:       1px                      !default;
+$check-border-radius:      null                     !default;
+$check-color:              $red                     !default;
+$check-border-color:       #444                     !default;
+$check-focus-color:        #333                     !default;
+$check-focus-bg-color:     $check-input-bg-color !default;
+$check-focus-border-color: #000 !default;
+
+// visually hide elements the accessible way
+@mixin vh {
+	border: 0                      !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	clip-path: inset(50%)          !important;
+	height: 1px                    !important;
+	overflow: hidden               !important;
+	padding: 0                     !important;
+	position: absolute             !important;
+	width: 1px                     !important;
+	white-space: nowrap            !important;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  @include vh();
+  &:hover {
+
+    + label {
+
+      &::before {
+        border-color: $check-focus-border-color;       
+      }
+    }
+  }
+
+  &:active {
+
+    + label {
+
+      &::before {
+        transition-duration: 0;
+      }
+    }
+  }
+
+  + label {
+    position: relative;
+    padding: $input-padding;
+    user-select: none;
+    span{
+      margin-left: 25px;
+      color:$black;
+      font-weight: 600;
+    }
+    &::before {
+      background-color: $check-input-bg-color;
+      border: $check-border-width solid $check-border-color;
+      box-sizing: content-box;
+      content: '';
+      color: $check-border-color;
+      margin-right: $check-width * 0.25;
+      top: 50%;
+      left: 0;
+      width: $check-width;
+      height: $check-height;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 2px 2px 0 #bebebe;
+    }
+
+    &::after {
+      box-sizing: content-box;
+      content: '';
+      background-color: $check-border-color;
+      position: absolute;
+      top: 50%;
+      left: $input-padding + $check-border-width + $check-scale/2;
+      width: $check-width - $check-scale;
+      height: $check-height - $check-scale;
+      margin-top: ($check-height - $check-scale)/-2;
+      transform: scale(0);
+      transform-origin: 50%;
+      transition: transform 200ms ease-out;
+    }
+  }
+
+  &[disabled] {
+
+    + label {
+
+      &::before {
+        animation: none;
+        box-shadow: none;
+        border: 1px solid rgba(128, 128, 128, 0.5);
+      }
+    }
+
+    &:active,
+    &:focus,
+    &:hover {
+
+      + label {
+
+        &::before {
+          border-color: rgba(128, 128, 128, 0.5);
+          filter: none;
+          transition: none;
+        }
+      }
+    }
+  }
+}
+
+[type="checkbox"] {
+
+  + label {
+
+    &::before,
+    &::after {
+      @if ($check-border-radius) {
+        border-radius: $check-border-radius;
+      }
+      @else {
+        border-radius: 0;
+      }
+    }
+
+    &::after {
+      background-color: transparent;
+      top: 50%;
+      left: calc(#{$input-padding} + #{$check-border-width} + #{$check-width}/5);
+      width: $check-width/2;
+      height: $check-width/5;
+      margin-top: calc(#{$check-height} / -2 / 2 * 0.8);
+      border-style: solid;
+      border-color: $check-color;
+      border-width: 0 0 3px 3px;
+      border-radius: 0;
+      border-image: none;
+      transform: rotate(-45deg) scale(0);
+      transition: none;
+    }
+  }
+
+  &:checked {
+
+    + label {
+
+      &::after {
+        content: '';
+        transform: rotate(-45deg) scale(1);
+        transition: transform 200ms ease-out;
+      }
+    }
+  }
+}
+
+[type="radio"] {
+
+  + label {
+
+    &::before,
+    &::after {
+      @if ($check-border-radius) {
+        border-radius: $check-border-radius;
+      }
+      @else {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &:checked {
+
+    &:active,
+    &:focus {
+
+      + label {
+
+        &::before {
+          animation: none;
+          filter: none;
+          transition: none;
+        }
+      }
+    }
+
+    + label {
+
+      &::before {
+        animation: none;
+        background-color: $check-input-bg-color;
+      }
+
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+
+@keyframes borderscale {
+  50% {
+    box-shadow: 0 0 0 2px #900;
+  }
+}
+
+
+
+
+// select
+select {
+  width: 100%;
+  appearance:none !important;
+  -moz-appearance:none !important; /* Firefox */
+  -webkit-appearance:none !important; /* Safari and Chrome */
+  background-color: #fff;
+  background-image: url(data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAJCAMAAADaUYZlAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAY1BMVEUAAADfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACLfACIAAABPjoSZAAAAH3RSTlMAUMoileQnlEP15ysqPfLrMTjv7mQ3Muwu6SjlKSTD8d3cggAAAAFiS0dEAIgFHUgAAAAJcEhZcwAAFiUAABYlAUlSJPAAAABZSURBVAjXTYzHDYBAAMNC771X778lHIcQfsVSZMlxPVk815F8CMJHwwAixQmk2a15CkksFSVUteoKysL8mha6voN2sJ1xwjCNb1fzcusy62Pd2Hb9OM7DjgufyAX6TsEj2wAAAABJRU5ErkJggg==);
+  background-repeat: no-repeat;
+  background-position: right 10px top 24px;
+  border: $check-border-width solid grey;
+  border-radius: 0;
+  padding: 19px 1em;
+  padding-right: 2.5em;
+  box-shadow: 2px 2px 0 #bebebe;
+  color:black;
+  font-weight: 600;
+  &:focus,
+  &:hover {
+    border-color: black;
+    outline: none;
+  }
+
+  &:active {
+    border-color: #900;
+  }
+  &:before{
+    content: '';   
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background-color: #900;
+  }
+
+ // Fix Firefox dotted focusring
+ &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}
+
+ /* IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance, IE 9 and earlier get a native select - targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting */
+/* The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	select::-ms-expand {
+		display: none;
+	}
+	select:focus::-ms-value {
+		background: transparent;
+		color: grey;
+	}
+}
+

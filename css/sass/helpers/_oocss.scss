@@ -1,0 +1,26 @@
+.no-radius{
+    @include border-radius(0 !important);
+}
+.black-color{
+    color: $black;
+}
+.btn-red{
+    background-color:$red;
+    color: $white;
+    border-color: $black;
+    box-shadow: 2px 2px 0 $black !important;
+    border-radius: 0px;
+    font-weight: 400;
+    height: 60px;
+    &:hover{
+        color: $white;
+        background-color: darken($red,10) !important;
+        border-color:transparent;
+    }
+    &:focus{
+        color: $white;
+        background-color: darken($red,10) !important;
+        border-color:transparent;
+    }
+}
+

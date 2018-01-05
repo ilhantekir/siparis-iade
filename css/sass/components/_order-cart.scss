@@ -1,0 +1,183 @@
+#returnCart {
+    margin-top: 15px;
+    margin-bottom: 200px;
+ 
+  table {
+    border: 1px solid $borderColor;
+    thead {
+      tr {
+        th{
+            padding: 25px 10px;
+            background-color: $grayColor;
+            color: $black;
+            font-weight: 600;
+            font-size: $fontSize18;           
+        }             
+      }      
+    }
+    tbody{
+        tr{
+            background-color: $white;
+            &:hover{
+                background-color: $grayColor;
+            }
+            td{
+                height: 205px;
+                vertical-align: middle;               
+                .product-img{
+                    width: 140px;
+                    height: 140px;
+                    padding: 10px;
+                    border: 1px solid $borderColor;
+                    float: left;                       
+                }
+                %desc-text{
+                        color:$textColor;
+                        font-size: $fontSize16;
+                        font-weight: 400;                        
+                }
+                .product-desc{
+                    float: left;
+                    margin-left: 15px;
+                    height: 140px;
+                    width: 255px;
+                    position: relative;
+                    &__name{
+                        a{
+                            @extend  %desc-text;                          
+                            font-weight: 500;
+                        }  
+                        margin-bottom: 30px;                     
+                    }
+                    &__price{
+                        @extend  %desc-text;
+                        font-weight: 600;
+                    }
+                    &__status{
+                        @extend  %desc-text;
+                        position: absolute;
+                        bottom: 0;
+                        font-weight: 600;
+                        span{
+                            color:$red;                           
+                        }
+                    }
+                }
+                &:last-child{
+                    padding-right: 25px;
+                }
+            }
+        }
+        .tfooter{
+            background-color: #f9f9f9;
+            &:hover{
+                background-color: #f9f9f9 !important;
+            }
+            td{
+               height: auto;
+               padding: 20px 10px;
+            }  
+            &__desc{
+                font-weight: 500;
+                color:$black;
+            }       
+         }
+    }
+    
+  }
+}
+
+@include col-xs(){
+ @include responstable(
+  $border-radius: $table-border-radius,
+  $highlight-color: $table-highlight-color,
+  $header-background-color: $table-header-background-color,
+  $header-text-color: $table-header-text-color,
+  $header-border: $table-header-border);  
+  
+  .responstable{
+    td{
+        max-width: initial;
+        &:first-child{
+            max-width: 50px;
+        }
+    }
+  }
+
+  #returnCart{
+      table{
+        thead {
+            tr{
+                th{
+                    padding: 8px;
+                    font-weight: 600;
+                    font-size: $fontSize15;
+                    text-align: center;
+                }
+            }
+        }
+          tbody{
+              border-left: 3px solid #ddd;
+              border-right: 3px solid #ddd;
+             tr{
+                td{
+                    height: auto;
+                    border-top: none;
+                    .product-img{
+                        width:100%;
+                        height: 100%;
+                    } 
+                    %desc-text-mobile{
+                        color:$textColor;
+                        font-size: $fontSize14;
+                        font-weight: 500;                        
+                }
+                    .product-desc{
+                              height: auto;
+                              position: initial;
+                              width:100%;   
+                              margin-left: 0;   
+                              &__name{
+                                  margin-bottom: 0;
+                                  a{
+                                    @extend  %desc-text-mobile;
+                                  }
+                              }
+                              &__price{
+                                @extend  %desc-text-mobile;
+                              }
+                              &__status{
+                                  position: initial;
+                                  @extend  %desc-text-mobile;
+                              }            
+                    }
+                    select{
+                        padding: 10px 1em;
+                        background-position: right 10px top 16px;
+                    }
+                    &:last-child{
+                        padding-right: 8px;
+                    }
+                }  
+             } 
+          } 
+      } 
+  } 
+
+  .tfooter{
+      position: relative !important;
+      height: 110px;
+      td{
+          vertical-align: top !important;
+          padding: 0 !important;          
+          label{
+              span{
+                display: none;
+              }           
+          }         
+      }
+  }
+}
+
+
+

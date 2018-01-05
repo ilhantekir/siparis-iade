@@ -1,0 +1,12 @@
+html, body {
+    font-family:'Roboto', sans-serif;
+    width: 100%;
+    font-size: $htmlFontSize !important;
+    font-weight: normal;
+    color: $fontColor;
+    background-color: $white;  
+}
+
+#returnCartModul{
+    display: none;
+}
