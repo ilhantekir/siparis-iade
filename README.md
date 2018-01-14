@@ -1,6 +1,5 @@
 ## Sipariş iade modulü ##
 
- Demo için [tıklayınız](http://ilhantekir.com/alegra/)
 
 ### Amaç: ###
 
